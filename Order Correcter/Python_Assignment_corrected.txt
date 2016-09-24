@@ -1,0 +1,53 @@
+Assignment 1 (Use Python as the main programming langugage to solve/discuss the questions below):
+
+Q1) Create a django model for a very basic social network. Models : user, post, comments, friends. How will you scale this to millions of users?
+Q2) If you are a Django expert attempt Q2A else attempt Q2B. 
+    Q2A) Create a form with 3 fields: Name, State, City and Pincode (all required fields). The three fields are conditional drop-downs (i.e. selecting state, fills in the city drop down list and selecting city fills in the list of pincodes). The conditions are guided by the following dictionary:
+
+    {
+        'Andaman Nicobar': {
+            'Car Nicobar': [744301, 744302, 744303, 744304],
+            'Diglipur': [744108, 744109, 744110, 744267],
+            'Nancowrie': [744202, 744203, 744205, 744208]
+        },
+        'Andhra Pradesh': {
+            'Adilabad': [504309, 504310, 504312, 504313],
+            'Asifabad': [504273, 504274, 504275, 504276, 504277],
+            'Sitagondi': [504308, 504501, 504502, 504503]
+        },
+        'Karnataka': {
+            'Anekal': [562106, 562107, 562109, 562111, 562112],
+            'Bangalore': [562149, 560096, 560064, 560079]
+        },
+        'Maharashtra': {
+            'Akola': [444001, 444002, 444003, 444004, 444007, 444009],
+            'Amravati': [444602, 444603, 444604, 444609, 444614]
+        }
+    }
+
+We don't want to load this dict in the front-end because it might get really big. There's a submit button on this page which saves the data in a model.
+Part 1 - Implement this using Django
+Part 2 - If there is an error in the page (e.g. leave the Name field blank), the state of the page should be maintained so that while the error is shown on the Name field, the data filed by the user in the other fields is not lost.
+
+    Q2B) Code a python script which can scrap the movies currently in the "Box office" from IMDB's homepage, list them and get the list of cast for each of them. The script should be able to take a parameter to specify that only show details of TOP 'N' movies. 
+
+Q3) For what problems will you absolutely use Java and not python?
+Q4) I can define a field in a django form in the following 2 ways:
+    class MyForm(forms.Form):
+        myfield = forms.ChoiceField(choices=[(u.id, u.username) for u in User.objects.filter(type="TYPE1")])
+
+    AND also as
+
+    class MyForm(forms.Form):
+        pass
+
+        def __init__(self, *args, **kwargs):
+            super(MyForm, self).__init__(*args, **kwargs)
+            self.fields['myfield'] = forms.ChoiceField(choices=[(u.id, u.username) for u in User.objects.filter(type="TYPE1")])
+
+    What is the difference between the two approaches (if any)?
+
+Q5) Discuss . Multi-processing and Multi-threading in Python. What is GIL?
+Q6) Write two scripts in python which run parallely (as in each script in a different terminal). The first script needs to generate a random number and push it to redis at random time-intervals, the second script needs to get this number from redis as soon as the first script pushes it and print it. (e.g. one script says 'sent 2332' the other says 'recvd 2332'). 
+Q7) Write the smallest possible python script, which parses this file and puts the questions in correct order into another file. Your approach should be generic with minimal assumptions.
+Q8) Write a decorator which when applied to a view, returns HttpResponseNotAllowed on a GET request but behaves normally on POST.
